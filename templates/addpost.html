@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+{{ ckeditor.load() }}
+<head>
+    <title>Add post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
+    <script src="{{ url_for('static', filename='js/anim.js') }}"></script>
+</head>
+
+
+    <div class="add_container">
+        <div class="blog-add">
+            <div class="card">
+            <div class="card-image"></div>
+                <form class="card-form" name="addForm" id="addForm" method="POST" action="{{ url_for('posts_B.ap') }}" >
+                    <div class="input">
+                        <input type="text" class="input-field"  placeholder="Title" name="title" id="title" required>
+                    </div>
+                    <div class="input">
+                        <input type="text" class="input-field" placeholder="Author" value="{{ session['user'] }}" name="author" id="author" required >
+                    </div>
+                    <div class="input">
+                        <label for="singleSelect">Choose an option:</label>
+                        
+                        <input class="input-field" type="text" list="options" id="media" name="media" oninput="enforceSelection()" />
+
+                        <datalist id="options">
+                            <option value="Facebook"></option>
+                            <option value="Spotify"></option>
+                            <option value="Instagram"></option>
+                            <option value="Custom"></option>
+                        </datalist>
+
+                    </div>
+                    <div class="input">
+                        <input type="text" class="input-field"  placeholder="URL" name="url" id="url" required>
+                    </div>
+                    <div class="action">
+                        <button type="submit" class="action-button" id="sendMessageButton">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
