@@ -1,4 +1,13 @@
-from flask import render_template, request, redirect, url_for, Blueprint, flash, session
+from flask import (
+    render_template,
+    request,
+    redirect,
+    url_for,
+    Blueprint,
+    flash,
+    session,
+    abort,
+)
 from utils.db import db
 from datetime import datetime
 from model.post import blogpost
@@ -94,70 +103,18 @@ def delete():
     return redirect(url_for("admin_B.admin"))
 
 
-# Post Search
-@posts_B.route("/search", methods=["GET", "POST"])
-def search():
-    search_value = request.form["search"]
-    post_ids = []
-
-    if "user" in session:
-        user_i = session["user_id"]
-        posts = blogpost.query.filter_by(user_id=user_i).all()
-        for post in posts:
-            if search_value.lower() in post.title.lower():
-                post_ids.append(post.id)
-        result = blogpost.query.filter(blogpost.id.in_(post_ids)).all()
-        if not result:
-            return render_template(
-                "index.html", info=f'Nothing found for "{search_value}"', posts=result
-            )
-        return render_template("index.html", posts=result)
-
-    posts = blogpost.query.all()
-    for post in posts:
-        if search_value.lower() in post.title.lower():
-            post_ids.append(post.id)
-    result = blogpost.query.filter(blogpost.id.in_(post_ids)).all()
-    if not result:
-        return render_template(
-            "index.html", info=f'Nothing found for "{search_value}"', posts=result
-        )
-    return render_template("index.html", posts=result)
+# This retuns the content based on the URL(Username probably)
 
 
-# sends likes to database.
-@posts_B.route("/like", methods=["POST"])
-def like():
-    likes = int(request.form["likes"])
-    postid = request.form["postid"]
-    userid = session["user_id"]
-    result = l.query.filter_by(post_id=postid, user_id=userid).all()
-    try:
-        if likes > 0:
-            likes = likes - 1
-            post_obj = l.query.filter_by(
-                post_id=postid, user_id=userid, like_amt=likes
-            ).one()
-            post_obj.post_id = postid
-            post_obj.user_id = userid
-            post_obj.like_amt = likes
-            db.session.commit()
-            return post(postid)
-        else:
-            likes = likes + 1
-            post_obj = l.query.filter_by(
-                post_id=postid, user_id=userid, like_amt=likes
-            ).one()
-            post_obj.post_id = postid
-            post_obj.user_id = userid
-            post_obj.like_amt = likes
-            db.session.commit()
+@posts_B.route("/<username>")
+def user_links(username):
+    # Fetch links for the username
+    print("username is " + username)
+    posts = blogpost.query.filter_by(author=username).all()
 
-            return post(postid)
-    except:
-        likes = 1
-        post_obj = l(post_id=postid, user_id=userid, like_amt=likes)
-        db.session.add(post_obj)
-        db.session.commit()
+    # If user does not exist, return 404 error
+    if not posts:
+        abort(404)
 
-        return post(postid)
+    # Render the template with user links
+    return render_template("user_links.html", username=username, posts=posts)
