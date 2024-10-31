@@ -6,7 +6,7 @@ from model.post import blogpost
 admin_B = Blueprint("admin_B", __name__)
 
 
-@admin_B.route("/admin")
+@admin_B.route("/dashboard")  # Admin rename to dashboard
 def admin():
     session["track"] = "admin_B.admin"
     if "user" in session:

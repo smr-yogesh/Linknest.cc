@@ -20,8 +20,9 @@ def users_count():
 @B_user.route("/")
 def index():
     db.create_all()
-    posts = blogpost.query.all()
-    return render_template("index.html", posts=posts)
+    if "user" in session:
+        return redirect(url_for("admin_B.admin"))
+    return render_template("index.html")
 
 
 @B_user.route("/register", methods=["POST", "GET"])
@@ -49,7 +50,7 @@ def signup():
     return redirect(url_for("B_user.register", mode="signup"))
 
 
-@B_user.route("/signin", methods=["POST", "GET"])
+@B_user.route("/login", methods=["POST", "GET"])
 def signin():
     if request.method == "POST":
         email = request.form["email"]

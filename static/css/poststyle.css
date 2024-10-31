@@ -133,3 +133,69 @@
   font-size: 27px;
   color: black;
 }
+
+/* home page design */
+
+/* Reset styles */
+
+.hero {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.home_card {
+	display: flex;
+	flex-direction: column;
+	width: auto;
+	height: auto;
+	background-color: transparent;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px 0 rgba(#999, .25);
+  margin-top: 100px;
+}
+.logo a{
+  color: black;
+  font-size: 35px;
+  font-weight: 600;
+}
+.logo a span{
+  color: #4CAF50;
+  transition: all 0.3s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #333;
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: #28a745; /* Green color on hover */
+  color: #fff;
+}
+

@@ -31,14 +31,14 @@ for (let i = 0; i < 100; i++) {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.strokeStyle = '#006600';
+    ctx.strokeStyle = 'rgba(0, 150, 0, 0.5)';
 
     for (let i = 0; i < dots.length; i++) {
         const dot = dots[i];
 
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#006600';
+        ctx.fillStyle = 'rgba(0, 150, 0, 0.5)';
         ctx.fill();
 
         dot.x += dot.vx;

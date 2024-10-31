@@ -16,17 +16,17 @@
                         <input type="text" class="input-field"  placeholder="Title" name="title" id="title" required>
                     </div>
                     <div class="input">
-                        <input type="text" class="input-field" placeholder="Author" value="{{ session['user'] }}" name="author" id="author" required >
+                        <input type="hidden" class="input-field" placeholder="Author" value="{{ session['user'] }}" name="author" id="author" required >
                     </div>
                     <div class="input">
-                        <label for="singleSelect">Choose an option:</label>
-                        
-                        <input class="input-field" type="text" list="options" id="media" name="media" oninput="enforceSelection()" />
+
+                        <input class="input-field" placeholder="Choose an option:" type="text" list="options" id="media" name="media" oninput="enforceSelection()" />
 
                         <datalist id="options">
                             <option value="Facebook"></option>
                             <option value="Spotify"></option>
                             <option value="Instagram"></option>
+                            <option value="Youtube"></option>
                             <option value="Custom"></option>
                         </datalist>
 
