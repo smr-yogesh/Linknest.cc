@@ -23,12 +23,19 @@
         {% endfor %}
       {% endif %}
       {% endwith %}
-      <a href="{{ url_for('posts_B.a_p')}}">
-        <button class="basic-button">Add post</button>
-      </a>
-      <a href="#">
-        <button class="basic-button">Settings</button>
-      </a>
+      <div class="button-container">
+        <div class="left-buttons">
+            <a href="{{ url_for('posts_B.a_p') }}">
+                <button class="basic-button">Add post</button>
+            </a>
+            <a href="#">
+                <button class="basic-button">Settings</button>
+            </a>
+        </div>
+        <div class="right-text">
+            <p>Find your links at: <a href="/{{ session['user'] }}">linknest.cc/{{ session['user'] }}</a> </p> <!-- Replace this with your desired text -->
+        </div>
+    </div>
       <br><br>
       <h3>Recent posts</h3>
       <hr>

@@ -319,7 +319,7 @@ hr{
     color: #4CAF50;
 }
 
-/* Add a hover effect if you want */
+/* hover effect*/
 .fa:hover {
   opacity: 0.7;
 }
@@ -428,19 +428,17 @@ hr{
 
 
 /* responsive media query start */
-@media (max-width: 1104px) {
-    .about .about-content .left img{
-        height: 350px;
-        width: 350px;
-    }
 
-}
+/*Tablets in landscape or small laptops*/
 
 @media (max-width: 991px) {
     .max-width{
         padding: 0 50px;
     }
 }
+
+/*Tablets and large mobile devices*/
+
 @media (max-width: 947px){
     .menu-btn{
         display: block;
@@ -513,6 +511,8 @@ hr{
     }
 }
 
+/*Mobile devices in landscape or large phones in portrait:*/
+
 @media (max-width: 690px) {
     .max-width{
         padding: 0 23px;
@@ -552,6 +552,8 @@ hr{
         font-size: 25px;
     }
 }
+
+/*Small mobile devices or portrait mode on phones:*/
 
 @media (max-width: 500px) {
     .home .home-content .text-2{

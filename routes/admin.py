@@ -12,6 +12,6 @@ def admin():
     if "user" in session:
         uid = session["user_id"]
         posts = blogpost.query.filter_by(user_id=uid).all()
-        return render_template("admin.html", posts=posts)
+        return render_template("admin.html", posts=posts, user=session["user"])
     flash("! Please login first !")
     return redirect(url_for("B_user.register", mode="login"))

@@ -1,50 +1,5 @@
 /* Responsive CSS for loginstyle.css */
 
-/* Navbar */
-.navbar {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #fff;
-	height: 80px;
-	padding: 0 20px;
-  }
-  
-  .navbar .max-width {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-  }
-  
-  .navbar .logo a {
-	color: #000;
-	font-size: 24px;
-	font-weight: 700;
-	text-decoration: none;
-  }
-  
-  .navbar .logo a span {
-	color: #3498db;
-  }
-  
-  .navbar ul.menu {
-	display: flex;
-	list-style: none;
-  }
-  
-  .navbar ul.menu li {
-	margin-left: 20px;
-  }
-  
-  .navbar ul.menu li a {
-	color: #000;
-	text-decoration: none;
-	font-size: 18px;
-	font-weight: 500;
-  }
-  
   /* Form */
   #form {
 	width: 100%;
@@ -56,6 +11,7 @@
   }
   
   #userform {
+	margin-top: 100px;
 	background-color: #fff;
 	padding: 40px;
 	border-radius: 10px;
@@ -129,20 +85,6 @@
 	font-weight: 500;
   }
   
-  /* Footer */
-  .footer {
-	background-color: #f5f5f5;
-	padding: 10px 0;
-	text-align: center;
-	font-size: 14px;
-	color: #777;
-  }
-  
-  .footer a {
-	color: #3498db;
-	text-decoration: none;
-  }
-  
   /* Responsive CSS for style.css */
   
   /* Tablet */
@@ -163,35 +105,10 @@
   
   /* Mobile */
   @media (max-width: 767px) {
-	.navbar {
-	  height: auto;
-	  padding: 10px;
+
+	#userform{
+		margin-top: 50px;
 	}
-  
-	.navbar .max-width {
-	  flex-wrap: wrap;
-	}
-  
-	.navbar .logo {
-	  flex-basis: 100%;
-	  text-align: center;
-	  margin-bottom: 10px;
-	}
-  
-	.navbar ul.menu {
-	  flex-basis: 100%;
-	  justify-content: center;
-	  margin: 0;
-	}
-  
-	.navbar ul.menu li {
-	  margin: 0 10px;
-	}
-  
-	#form #userform {
-	  padding: 20px;
-	}
-  
 	#userform h2 {
 	  font-size: 20px;
 	}
@@ -215,9 +132,6 @@
 	#userform p {
 	  font-size: 12px;
 	}
-  
-	.footer {
-	  font-size: 12px;
-	}
-  }
+
+}
   

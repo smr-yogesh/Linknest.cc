@@ -95,6 +95,30 @@
   padding: 15vh calc(20vw - 50px);
 }
 
+/* for aligning on teh menu*/
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Aligns the content on the left and right */
+  align-items: center; /* Vertically centers the content */
+}
+
+.left-buttons {
+  display: flex; /* Keeps the buttons next to each other */
+}
+
+.left-buttons a {
+  margin-right: 10px; /* Adds some space between the buttons */
+}
+
+.right-text {
+  margin-left: auto; /* Pushes the text to the right side */
+  font-size: 16px; /* Adjust the font size as needed */
+  color: black; /* Change the color as desired */
+}
+
+/* buttons*/
+
 .basic-button {
   background-color: #4CAF50;
   height: auto;

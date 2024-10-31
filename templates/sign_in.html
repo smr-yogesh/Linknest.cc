@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <head>
   <meta charset="UTF-8">
   <title>Sign Up - Signin</title>
@@ -13,18 +15,6 @@
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<nav class="navbar">
-  <div class="max-width">
-      <div class="logo"><a href="/">Blo<span>g</span></a></div>
-      <ul class="menu">
-        <li><a href={{ url_for('B_user.contact') }} class="menu-btn">Contact</a></li>
-        <li><a href="https://yogeshbhatt.info.np" class="menu-btn">Portfolio</a></li>
-      </ul>
-      <div class="menu-btn">
-          <i class="fas fa-bars"></i>
-      </div>
-  </div>
-</nav>
 <body>
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
@@ -33,7 +23,7 @@
     {% endfor %}
   {% endif %}
   {% endwith %}
-<div id="form">
+<div id="formm">
   <div class="container">
     <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
       <div id="userform">
@@ -91,11 +81,7 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="footer">                                                                                           
-  <span>Created By <a href="http://yogeshbhatt.info.np">SMR</a> | <span class="far fa-copyright"></span> {{ now.year }} All rights reserved.</span>
-</div>  
+</div> 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -104,3 +90,4 @@
 <script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
 
 
+{% endblock %}
