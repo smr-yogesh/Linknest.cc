@@ -15,3 +15,14 @@ def admin():
         return render_template("dashboard.html", posts=posts, user=session["user"])
     flash("! Please login first !")
     return redirect(url_for("B_user.register", mode="login"))
+
+
+@admin_B.route("/settings")  # User settings
+def settings():
+    session["track"] = "admin_B.admin"
+    if "user" in session:
+        uid = session["user_id"]
+        posts = blogpost.query.filter_by(user_id=uid).all()
+        return render_template("settings.html", posts=posts, user=session["user"])
+    flash("! Please login first !")
+    return redirect(url_for("B_user.register", mode="login"))

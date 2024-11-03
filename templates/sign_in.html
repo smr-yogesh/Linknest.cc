@@ -5,15 +5,11 @@
   <title>Sign Up - Signin</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/loginstyle.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/anim.js') }}"></script>
   <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/ok.png') }}">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<html lang="en">
-<head>
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -35,11 +31,13 @@
                 <label> Username<span class="req">*</span> </label>
                 <input type="text" class="form-control" name="name" id="name" required data-validation-required-message="Please enter your name." autocomplete="off">
                 <p class="help-block text-danger"></p>
+                <small id="nameFeedback"></small>
               </div>
               <div class="form-group">
                 <label> Email<span class="req">*</span> </label>
                 <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
                 <p class="help-block text-danger"></p>
+                <small id="emailFeedback"></small>
               </div>
               <div class="form-group">
                 <label> Password<span class="req">*</span> </label>
@@ -87,7 +85,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 <!-- partial -->
-<script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
-
-
 {% endblock %}

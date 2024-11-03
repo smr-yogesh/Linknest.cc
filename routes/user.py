@@ -39,13 +39,23 @@ def signup():
         name = request.form["name"]
         password = request.form["password"]
 
-        user_id = 1 + users_count()
-        users = user_data(email, password, user_id, name)
+        existing_user = user_data.query.filter_by(email=email, name=name).first()
+        if existing_user:
+            flash("User with this email already exists.")
+        else:
+            # Check if a user with the same name already exists
+            existing_user_by_name = user_data.query.filter_by(name=name).first()
+            if existing_user_by_name:
+                flash("User with this name already exists.")
+                return redirect(url_for("B_user.signup"))
+            else:
+                user_id = 1 + users_count()
+                users = user_data(email, password, user_id, name)
 
-        db.session.add(users)
-        db.session.commit()
+                db.session.add(users)
+                db.session.commit()
 
-        return redirect(url_for("B_user.signin"))
+            return redirect(url_for("B_user.signin"))
 
     return redirect(url_for("B_user.register", mode="signup"))
 
