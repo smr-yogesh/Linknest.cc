@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/ok.png') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: #f1f3fb;">
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     {% for category, message in messages %}
