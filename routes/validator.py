@@ -1,5 +1,5 @@
 from flask import jsonify, request, Blueprint
-from model.user import user as u  # Assuming User is your model
+from model.user import user as u
 
 validator = Blueprint("validator", __name__)
 

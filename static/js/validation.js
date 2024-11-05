@@ -1,7 +1,7 @@
 // Function to check if email is already in use
 document.getElementById("email").addEventListener("input", function () {
     const email = this.value;
-    if (email.length > 0) { // Start checking as soon as there's any input
+    if (email.length > 1) { // Start checking as soon as there's any input
         fetch("/check_email", {
             method: "POST",
             headers: {
@@ -24,7 +24,7 @@ document.getElementById("email").addEventListener("input", function () {
 document.getElementById("name").addEventListener("input", function () {
     const name = this.value;
     const feedback = document.getElementById("nameFeedback");
-    if (name.length < 4) {
+    if (name.length < 5) {
         feedback.textContent = "Username must be at least 5 characters long.";
         feedback.style.color = "red";
     } else {

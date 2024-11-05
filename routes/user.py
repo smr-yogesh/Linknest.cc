@@ -39,7 +39,7 @@ def signup():
         name = request.form["name"]
         password = request.form["password"]
 
-        existing_user = user_data.query.filter_by(email=email, name=name).first()
+        existing_user = user_data.query.filter_by(email=email).first()
         if existing_user:
             flash("User with this email already exists.")
         else:
