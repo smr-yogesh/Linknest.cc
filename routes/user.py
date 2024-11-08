@@ -69,7 +69,6 @@ def signup():
                 db.session.commit()
                 db.session.add(OTP)
                 db.session.commit()
-                flash("Verification code sent, check email!")
 
             return redirect(url_for("B_user.is_verified"))
 
@@ -105,21 +104,24 @@ def signin():
 
 @B_user.route("/is_verified", methods=["POST", "GET"])
 def is_verified():
-    user_id = session["user_id"]
-    if request.method == "POST":
-        R_code = request.form["code"]
-        try:
-            code = o.query.filter_by(user_id=user_id).first()
-            if code.otp == R_code:
-                user = user_data.query.filter_by(user_id=user_id).first()
-                user.is_verified = "yes"
-                db.session.commit()
-                flash("Account verified")
-                return redirect(url_for("B_user.register", mode="login"))
-        except:
-            return "something went wrong"
-
-    return render_template("verify.html")
+    if "user_id" in session:
+        user_id = session["user_id"]
+        if request.method == "POST":
+            R_code = request.form["code"]
+            try:
+                code = o.query.filter_by(user_id=user_id).first()
+                if code.otp == R_code:
+                    user = user_data.query.filter_by(user_id=user_id).first()
+                    user.is_verified = "yes"
+                    db.session.commit()
+                    flash("Account verified")
+                    return redirect(url_for("B_user.register", mode="login"))
+                else:
+                    flash("That didn't work, try again")
+            except:
+                return "something went wrong"
+        return render_template("verify.html")
+    return redirect(url_for("B_user.register", mode="login"))
 
 
 @B_user.route("/logout")
