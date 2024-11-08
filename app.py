@@ -19,7 +19,7 @@ def not_found(e):
 
 @app.context_processor
 def inject_now():
-    return {"now": datetime.utcnow()}
+    return {"now": datetime.now()}
 
 
 if __name__ == "__main__":

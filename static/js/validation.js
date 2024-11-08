@@ -46,3 +46,33 @@ document.getElementById("name").addEventListener("input", function () {
         feedback.textContent = ""; // Clear feedback if input is empty
     }
 });
+
+// Function to change animation style live
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("anim").addEventListener("input", function () {
+        const selectedAnimation = this.value.trim(); // Use trim to remove any extra spaces
+        const scriptElement = document.getElementById("animation-script");
+
+        // Check if the input is valid against the options
+        if (selectedAnimation === "Dots" || selectedAnimation === "Lines") {
+            // Remove the old script tag
+            scriptElement.parentNode.removeChild(scriptElement);
+
+            // Create a new script element with the new animation
+            const newScript = document.createElement("script");
+            newScript.id = "animation-script";
+
+            // Dynamically change the `src` based on the selected option
+            if (selectedAnimation === "Dots") {
+                newScript.src = animations.dots;
+            } else if (selectedAnimation === "Lines") {
+                newScript.src = animations.lines;
+            }
+
+            // Append the new script tag to the body
+            document.body.appendChild(newScript);
+        }
+    });
+});
+
+

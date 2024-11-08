@@ -3,6 +3,8 @@ from werkzeug.security import check_password_hash
 from utils.db import db
 from model.user import user as user_data
 from model.post import blogpost
+from model.otp import otp as o
+import random, string
 
 B_user = Blueprint("B_user", __name__)
 
@@ -15,6 +17,14 @@ def users_count():
             total = each.user_id
 
     return total
+
+
+def generate_random_code():
+    # Define the characters to choose from (letters and digits)
+    characters = string.ascii_letters + string.digits
+    # Generate a random 8-character code
+    random_code = "".join(random.choice(characters) for _ in range(8))
+    return random_code
 
 
 @B_user.route("/")
@@ -38,6 +48,7 @@ def signup():
         email = request.form["email"]
         name = request.form["name"]
         password = request.form["password"]
+        is_verified = "no"
 
         existing_user = user_data.query.filter_by(email=email).first()
         if existing_user:
@@ -50,12 +61,17 @@ def signup():
                 return redirect(url_for("B_user.signup"))
             else:
                 user_id = 1 + users_count()
-                users = user_data(email, password, user_id, name)
-
+                code = generate_random_code()
+                session["user_id"] = user_id
+                users = user_data(email, password, user_id, name, is_verified)
+                OTP = o(otp=code, user_id=user_id)
                 db.session.add(users)
                 db.session.commit()
+                db.session.add(OTP)
+                db.session.commit()
+                flash("Verification code sent, check email!")
 
-            return redirect(url_for("B_user.signin"))
+            return redirect(url_for("B_user.is_verified"))
 
     return redirect(url_for("B_user.register", mode="signup"))
 
@@ -69,19 +85,41 @@ def signin():
         try:
             user = user_data.query.filter_by(email=email).first()
             if check_password_hash(user.pswd, password):
-                session["user"] = user.name
                 session["user_id"] = user.user_id
-                if "track" in session:
-                    return redirect(url_for(session["track"]))
-                return redirect(url_for("B_user.index"))
+                if user.is_verified == "yes":
+                    session["user"] = user.name
+                    if "track" in session:
+                        return redirect(url_for(session["track"]))
+                    return redirect(url_for("B_user.index"))
+                else:
+                    return redirect(url_for("B_user.is_verified"))
             else:
                 flash("Invalid credentials ")
                 return redirect(url_for("B_user.register", mode="login"))
         except:
-            flash("Invalid credentials ")
-            return redirect(url_for("B_user.register", mode="login"))
+            flash("User doesn't exist! ")
+            return redirect(url_for("B_user.register", mode="signup"))
 
     return redirect(url_for("B_user.register", mode="login"))
+
+
+@B_user.route("/is_verified", methods=["POST", "GET"])
+def is_verified():
+    user_id = session["user_id"]
+    if request.method == "POST":
+        R_code = request.form["code"]
+        try:
+            code = o.query.filter_by(user_id=user_id).first()
+            if code.otp == R_code:
+                user = user_data.query.filter_by(user_id=user_id).first()
+                user.is_verified = "yes"
+                db.session.commit()
+                flash("Account verified")
+                return redirect(url_for("B_user.register", mode="login"))
+        except:
+            return "something went wrong"
+
+    return render_template("verify.html")
 
 
 @B_user.route("/logout")

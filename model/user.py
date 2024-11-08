@@ -10,9 +10,11 @@ class user(db.Model):
     email = db.Column(db.String(20), unique=True)
     pswd = db.Column(db.String(255))
     user_id = db.Column(db.Integer)
+    is_verified = db.Column(db.String(3))
 
-    def __init__(self, email, pswd, user_id, name):
+    def __init__(self, email, pswd, user_id, name, is_verified):
         self.email = email
         self.pswd = generate_password_hash(pswd, method="sha256")
         self.user_id = user_id
         self.name = name
+        self.is_verified = is_verified
