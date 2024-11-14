@@ -4,6 +4,7 @@ from utils.db import db
 from model.user import user as user_data
 from model.post import blogpost
 from model.otp import otp as o
+from routes.validator import send_mail
 import random, string
 
 B_user = Blueprint("B_user", __name__)
@@ -65,12 +66,14 @@ def signup():
                 session["user_id"] = user_id
                 users = user_data(email, password, user_id, name, is_verified)
                 OTP = o(otp=code, user_id=user_id)
-                db.session.add(users)
-                db.session.commit()
-                db.session.add(OTP)
-                db.session.commit()
-
-            return redirect(url_for("B_user.is_verified"))
+                if send_mail(email, code):
+                    db.session.add(users)
+                    db.session.commit()
+                    db.session.add(OTP)
+                    db.session.commit()
+                    return redirect(url_for("B_user.is_verified"))
+                else:
+                    return redirect("/404")
 
     return redirect(url_for("B_user.register", mode="signup"))
 
