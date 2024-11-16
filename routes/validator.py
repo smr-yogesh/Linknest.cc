@@ -1,15 +1,16 @@
 from flask import jsonify, request, Blueprint, render_template
 from model.user import user as u
 import smtplib
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 validator = Blueprint("validator", __name__)
 # SMTP Configuration
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-SMTP_USERNAME = " Email here"
-SMTP_PASSWORD = " put pussi word here "
+SMTP_SERVER = os.getenv("SMTP_SERVER")
+SMTP_PORT = os.getenv("SMTP_PORT")
+SMTP_USERNAME = os.getenv("SMTP_USERNAME")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 
 def send_mail(email, otp):
