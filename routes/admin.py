@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, Blueprint, flash, session
-from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from utils.db import db
 from datetime import datetime
 from model.post import blogpost
@@ -37,7 +37,6 @@ def settings():
     user = u.query.filter_by(id=getid()).one_or_none()
 
     # Updates the session with the user's name
-    print(session["user"])
     session["user"] = user.name
 
     # Renders the settings page if the user is logged in
@@ -81,14 +80,14 @@ def update():
                 flash("Relogin and verify the email, code sent!", "message-success")
 
     # Updates the user's password if provided and the current password matches
-    password = request.form.get("password")
+    password = request.form.get("new_password")
     if password:
         c_password = request.form.get("current_password")
         # Verifies the current password before updating
         if check_password_hash(user.pswd, c_password):
-            user.password = password
+            user.pswd = generate_password_hash(password)
 
     # Saves the changes to the database
     db.session.commit()
-    flash("Edited successfully!!", "message-success")
+    flash("Updated successfully!!", "message-success")
     return redirect(url_for("admin_B.settings"))
