@@ -1,0 +1,228 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.box {
+    display: flex; /* Ensure the sidebar and content are side by side */
+    flex-direction: row;
+    width: 100%; /* Take full container width */
+    gap: 20px; /* Add space between the sidebar and content */
+}
+.sidebar {
+    width: 200px;
+    padding: 20px;
+    border-right: 2px solid black;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    gap: 10px; /* Add space between items */
+}
+
+.sidebar button {
+    width: 100%; /* Make buttons span the full width of the sidebar */
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+    text-align: left; /* Align text to the left */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background-color: #4CAF50;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    width: 100%;
+}
+.hidden {
+    display: none;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    width: 100px;
+	height: 40px;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #4CAF50;
+}
+input {
+    width: 300px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid black;
+}
+
+
+
+/* Retreved from loginstyle.css */
+
+/* Form */
+  
+  #userform2 {
+	margin-left: 2%;
+	margin-top: 200px;
+	background-color: #f1f3fb;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+  }
+  
+  #userform2 .tab-content {
+	margin-top: 30px;
+  }
+  
+  #userform2 h2 {
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 30px;
+	text-align: center;
+  }
+  
+  #userform2 label {
+	font-size: 16px;
+	font-weight: 500;
+  }
+  
+  #userform2 input[type="text"],
+  #userform2 input[type="email"],
+  #userform2 input[type="password"] {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+  }
+  
+  #userform2 .help-block {
+	color: #dc3545;
+	font-size: 14px;
+	margin-top: 5px;
+  }
+  
+  #userform2 .mrgn-30-top {
+	margin-top: 30px;
+  }
+  
+  #userform2 .btn {
+	width: 100%;
+	height: 40px;
+	background-color: #4CAF50;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  #userform2 .btn:hover {
+	background-color: transparent;
+	border: 2px solid #333;
+	color: #333;
+  }
+  
+  #userform2 p {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 20px;
+  }
+  
+  #userform2 a {
+	color: #4CAF50;
+	text-decoration: none;
+	font-weight: 500;
+  }
+
+  .all{
+	display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 75vh; /* Full viewport height */
+    text-align: center;
+  }
+  
+  /* Responsive CSS for style.css */
+  
+  /* Tablet */
+  @media (max-width: 991px) {
+	#form .container {
+	  width: 100%;
+	}
+  
+	#form .col-lg-6,
+	#form .col-lg-offset-3,
+	#form .col-md-6,
+	#form .col-md-offset-3,
+	#form .col-md-8,
+	#form .col-md-offset-2 {
+	  width: 100%;
+	}
+  }
+  
+  /* Mobile */
+  @media (max-width: 850px) {
+
+	#userform2{
+        width: 100%;
+		margin-top: 100px;
+        margin-right: auto;
+        display: block;
+	}
+	#userform2 h2 {
+	  font-size: 20px;
+	}
+  
+	#userform2 label {
+	  font-size: 14px;
+	}
+  
+	#userform2 input[type="text"],
+	#userform2 input[type="email"],
+	#userform2 input[type="password"] {
+	  height: 30px;
+	  font-size: 14px;
+	}
+  
+	#userform2 .btn {
+	  height: 30px;
+	  font-size: 14px;
+	}
+  
+	#userform2 p {
+	  font-size: 12px;
+	}
+    
+    .sidebar {
+        width: auto;
+        padding: 20px;
+        border-bottom: 2px solid black;
+        border-right: #f1f3fb;
+        flex-direction: row; /* Align items vertically */
+        gap: 10px; /* Add space between items */
+    }
+    .content {
+        display: block;
+        flex: 0;
+        padding: 20px;
+        width: 100%;
+    }
+}
+  

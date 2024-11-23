@@ -70,3 +70,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     draw();
 });
+
+console.log("Dots animation script loaded.");

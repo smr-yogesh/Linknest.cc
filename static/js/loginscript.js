@@ -77,3 +77,15 @@ $(document).ready(function(){
       $('.menu-btn i').toggleClass("active");
   });
 });
+
+
+//  update imformation side bar 
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.content > div').forEach(div => {
+        div.classList.add('hidden');
+    });
+
+    // Show the selected section
+    document.getElementById(sectionId + '-section').classList.remove('hidden');
+}

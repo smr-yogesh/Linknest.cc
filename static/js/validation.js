@@ -75,4 +75,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Password matching 
+
+$(document).ready(function () {
+    // Password matching logic
+    $('#new-password, #confirm-password').on('input', function () {
+        const newPassword = $('#new-password').val();
+        const confirmPassword = $('#confirm-password').val();
+
+        if (newPassword === confirmPassword && newPassword.length > 0) {
+            $('#passwordFeedback')
+                .text('Passwords match')
+                .css('color', 'green');
+            $('#submitButton').prop('disabled', false);
+        } else if (newPassword.length > 0 || confirmPassword.length > 0) {
+            $('#passwordFeedback')
+                .text('Passwords do not match')
+                .css('color', 'red');
+            $('#submitButton').prop('disabled', true);
+        } else {
+            $('#passwordFeedback').text('');
+            $('#submitButton').prop('disabled', true);
+        }
+    });
+});
+
 

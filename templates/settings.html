@@ -1,18 +1,82 @@
 
 {% extends "base.html" %}
 {% block content %}
-<head>
+<head>  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}">
   </head>
 <title>Settings</title>
 <div class="container">
-<h3>Settings</h3>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+            <div class="message message-{{ category }}">
+                <p>{{ message }}</p>
+                <button class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+            </div>
+            <script>
+              setTimeout(function() {
+                  document.querySelector('.message-{{ category }}').style.display = 'none';
+              }, 3000);
+          </script>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+<h3>Update your information </h3>
 <hr>
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-        
-        </div>
-    </div>
+    <div class="box" style="margin-top: -55px; margin-bottom: -50px;">
+            <div id="userform2">
+                <div class="sidebar">
+                    <button onclick="showSection('username')">Username</button>
+                    <button onclick="showSection('email')">Email</button>
+                    <button onclick="showSection('password')">Password</button>
+                </div>
+                <form id="update" method="POST" action="{{ url_for('admin_B.update') }}">
+                    <div class="content">
+                        <!-- Username Section -->
+                        <div id="username-section">
+                            <div class="input-group">
+                                <label for="username">Username:</label><br>
+                                <input type="text" id="name" name="name" placeholder="Enter new username">
+                                <small id="nameFeedback"></small>
+                            </div>
+                            <button type="submit">Save</button>
+                        </div>
+                
+                        <!-- Email Section -->
+                        <div id="email-section" class="hidden">
+                            <div class="input-group">
+                                <label for="email">Email:</label><br>
+                                <input type="email" id="email" name="email" placeholder="Enter new email">
+                                <small id="emailFeedback"></small>
+                            </div>
+                            <button type="submit">Save</button>
+                        </div>
+                
+                        <!-- Password Section -->
+                        <div id="password-section" class="hidden">
+                            <div class="input-group">
+                                <label for="current-password">Current Password:</label><br>
+                                <input type="password" id="current-password" name="current_password" placeholder="Enter current password">
+                            </div>
+                            <div class="input-group">
+                                <label for="new-password">New Password:</label><br>
+                                <input type="password" id="new-password" name="new_password" placeholder="Enter new password">
+                            </div>
+                            <div class="input-group">
+                                <label for="confirm-password">Confirm Password:</label><br>
+                                <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm new password">
+                                <small id="passwordFeedback"></small>
+                            </div>
+                            <button type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+    </div> 
 </div>
+<script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
 {% endblock %}

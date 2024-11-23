@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
 <head>
   <title>Admin</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
@@ -25,7 +24,7 @@
       <div class="button-container">
         <div class="left-buttons">
             <a href="{{ url_for('posts_B.a_p') }}">
-                <button class="basic-button">Add post</button>
+                <button class="basic-button">Add Link</button>
             </a>
             <a href="{{ url_for('admin_B.settings') }}">
                 <button class="basic-button">Settings</button>
@@ -36,7 +35,7 @@
         </div>
       </div>
       <br><br>
-      <h3>Recent posts</h3>
+      <h3>Your links</h3>
       <hr>
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">

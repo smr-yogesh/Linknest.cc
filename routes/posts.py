@@ -63,9 +63,12 @@ def ap():
 # Post editing route.
 @posts_B.route("/edit/", methods=["POST", "GET"])
 def edit():
-    post_id = request.form["edit_id"]
-    post_to_edit = blogpost.query.filter_by(id=post_id).one()
-    return render_template("updatepost.html", post=post_to_edit)
+    try:
+        post_id = request.form["edit_id"]
+        post_to_edit = blogpost.query.filter_by(id=post_id).one()
+        return render_template("updatepost.html", post=post_to_edit)
+    except:
+        return redirect("/404")
 
 
 # Updates/edits post
