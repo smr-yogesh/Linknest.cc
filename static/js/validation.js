@@ -100,4 +100,27 @@ $(document).ready(function () {
     });
 });
 
+//required input section validation
 
+document.getElementById("update").addEventListener("submit", function(event) {
+    let isValid = true;
+    const visibleInputs = document.querySelectorAll("form#update input:not([type=hidden]):not(.hidden)");
+
+    visibleInputs.forEach(input => {
+        if (input.offsetParent !== null && !input.value.trim()) {
+            isValid = false;
+            input.classList.add("error");
+            const feedback = document.getElementById(input.id + "Feedback");
+            if (feedback) feedback.textContent = "This field is required.";
+                feedback.style.color = "red";
+        } else {
+            input.classList.remove("error");
+            const feedback = document.getElementById(input.id + "Feedback");
+            if (feedback) feedback.textContent = "";
+        }
+    });
+
+    if (!isValid) {
+        event.preventDefault(); // Stop form submission
+    }
+});

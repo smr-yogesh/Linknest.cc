@@ -12,3 +12,6 @@ app.secret_key = "super secret key"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
 
 db.init_app(app)
+
+with app.app_context():
+    db.create_all()

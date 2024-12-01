@@ -41,7 +41,7 @@ def settings():
 
     # Renders the settings page if the user is logged in
     if "user" in session:
-        return render_template("settings.html")
+        return render_template("settings.html", user=user)
 
     # If not logged in, flashes a warning and redirects to login
     flash("! Please login first !")
@@ -81,11 +81,14 @@ def update():
 
     # Updates the user's password if provided and the current password matches
     password = request.form.get("new_password")
+    c_password = request.form.get("current_password")
     if password:
-        c_password = request.form.get("current_password")
         # Verifies the current password before updating
         if check_password_hash(user.pswd, c_password):
             user.pswd = generate_password_hash(password)
+        else:
+            flash("Incorrect current password!!")
+            return redirect(url_for("admin_B.settings"))
 
     # Saves the changes to the database
     db.session.commit()
