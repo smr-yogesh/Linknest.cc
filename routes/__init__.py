@@ -10,9 +10,7 @@ app = Flask(__name__, static_url_path="", static_folder=r"../static")
 
 app.template_folder = "../templates"
 app.secret_key = "super secret key"
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "sqlite:///linknest.db"  # os.getenv("SQLALCHEMY_DATABASE_URI") <-- postgresql
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 db.init_app(app)
 
