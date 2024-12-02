@@ -7,6 +7,7 @@ from model.user import user as u
 from model.otp import otp
 from routes.validator import send_mail
 from routes.user import generate_random_code
+import os
 
 admin_B = Blueprint("admin_B", __name__)
 
@@ -19,6 +20,7 @@ def getid():
 
 @admin_B.route("/dashboard")  # Admin URL rename to dashboard
 def admin():
+    print(os.getenv("SQLALCHEMY_DATABASE_URI"))
     # Checks if a user is logged in
     if "user" in session:
         # Retrieves all blog posts for the logged-in user
@@ -52,6 +54,7 @@ def settings():
 def update():
     # Query the user to be updated
     user = u.query.filter_by(id=getid()).one_or_none()
+    link = links.query.filter_by(id=getid()).one_or_none()
 
     # Updates the session with the user's name
     session["user"] = user.name
@@ -65,6 +68,7 @@ def update():
     name = request.form.get("name")
     if name:
         user.name = name
+        link.author = name
 
     # Updates the user's email if provided
     email = request.form.get("email")
