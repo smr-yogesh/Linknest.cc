@@ -44,7 +44,7 @@
               <h2 class="post-title">
                 {{ post.title }}
               </h2>
-            <p class="post-meta">Posted on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
+            <p class="post-meta">Added on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
             <div class="inner"> 
               <form action="{{ url_for('posts_B.edit') }}" method="POST" style="display: inline-block;">
                 <input type=hidden value="{{ post.id}}"name="edit_id" id="edit_id" />
