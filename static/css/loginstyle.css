@@ -1,0 +1,147 @@
+/* Responsive CSS for loginstyle.css */
+
+/* Form */
+  #form {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f1f3fb;
+  }
+  
+  #userform {
+	margin-left: 2%;
+	margin-top: 100px;
+	background-color: #f1f3fb;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #userform .tab-content {
+	margin-top: 30px;
+  }
+  
+  #userform h2 {
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 30px;
+	text-align: center;
+  }
+  
+  #userform label {
+	font-size: 16px;
+	font-weight: 500;
+  }
+  
+  #userform input[type="text"],
+  #userform input[type="email"],
+  #userform input[type="password"] {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+  }
+  
+  #userform .help-block {
+	color: #dc3545;
+	font-size: 14px;
+	margin-top: 5px;
+  }
+  
+  #userform .mrgn-30-top {
+	margin-top: 30px;
+  }
+  
+  #userform .btn {
+	width: 100%;
+	height: 40px;
+	background-color: #4CAF50;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  #userform .btn:hover {
+	background-color: transparent;
+	border: 2px solid #333;
+	color: #333;
+  }
+  
+  #userform p {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 20px;
+  }
+  
+  #userform a {
+	color: #4CAF50;
+	text-decoration: none;
+	font-weight: 500;
+  }
+
+  .all{
+	display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 75vh; /* Full viewport height */
+    text-align: center;
+  }
+  
+  /* Responsive CSS for style.css */
+  
+  /* Tablet */
+  @media (max-width: 991px) {
+	#form .container {
+	  width: 100%;
+	}
+  
+	#form .col-lg-6,
+	#form .col-lg-offset-3,
+	#form .col-md-6,
+	#form .col-md-offset-3,
+	#form .col-md-8,
+	#form .col-md-offset-2 {
+	  width: 100%;
+	}
+  }
+  
+  /* Mobile */
+  @media (max-width: 767px) {
+
+	#userform{
+		margin-top: 50px;
+	}
+	#userform h2 {
+	  font-size: 20px;
+	}
+  
+	#userform label {
+	  font-size: 14px;
+	}
+  
+	#userform input[type="text"],
+	#userform input[type="email"],
+	#userform input[type="password"] {
+	  height: 30px;
+	  font-size: 14px;
+	}
+  
+	#userform .btn {
+	  height: 30px;
+	  font-size: 14px;
+	}
+  
+	#userform p {
+	  font-size: 12px;
+	}
+}
+  

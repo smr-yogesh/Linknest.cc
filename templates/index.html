@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <title>LinkNest</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <script src="{{ url_for('static', filename='js/anim.js') }}"></script>
+<section class="post_list" id="post_list" >
+<!-- Main Content -->
+<div class="post_preview" >
+    <div class="max-width">
+      <div class="home_card" style="margin-top:-450px;">
+        <div class="hero">
+          <h1>Welcome to <div class="logo"><a href="/">Link<span>Nest</span></a></div></h1>
+          <p>Let's manage your links</p>
+          <div class="buttons">
+            <a href="/login" class="btn">Login</a>
+            <a href="/register" class="btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+{% endblock %}

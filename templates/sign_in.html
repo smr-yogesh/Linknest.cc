@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Signin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loginstyle.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/loginscript.js') }}"></script>
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/ok.png') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f1f3fb;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      {% for category, message in messages %}
+      <center><h1>{{ message }}</h1></center>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+<div id="formm">
+  <div class="container" style="margin-top:-300px;">
+    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+      <div id="userform">
+        <div class="tab-content">
+          <div class="tab-pane fade {{ 'active in' if request.args.get('mode', 'signup') == 'signup' }}" id="signup">
+            <h2 class="text-uppercase text-center"> Register </h2>
+            <form id="signup" method="POST" action="{{ url_for('B_user.signup') }}">
+              <div class="form-group">
+                <label> Username<span class="req">*</span></label>
+                <input type="text" class="form-control" name="name" id="name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                <p class="help-block text-danger"></p>
+                <small id="nameFeedback"></small>
+              </div>
+              <div class="form-group">
+                <label> Email<span class="req">*</span></label>
+                <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                <p class="help-block text-danger"></p>
+                <small id="emailFeedback"></small>
+              </div>
+              <div class="form-group">
+                <label> Password<span class="req">*</span></label>
+                <input type="password" class="form-control" name="password" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                <p class="help-block text-danger"></p>
+              </div>
+          <!-- <div class="input">
+                <input class="input-field" placeholder="Choose animation style:" type="text" list="options" id="anim" name="anim" oninput="enforceSelection()" />
+                <datalist id="options">
+                    <option value="Dots"></option>
+                    <option value="Lines"></option>
+                </datalist>
+            </div>  
+          !-->            
+              <div class="mrgn-30-top">
+                <button type="submit" class="btn btn-larger btn-block">
+                Sign up
+                </button>
+              </div>
+            </form>
+            <br>
+            <p>Already have account?<a href="#login"  role="tab" data-toggle="tab"> Login here</a></p>
+          </div>
+          <div class="tab-pane fade {{ 'active in' if request.args.get('mode', '') == 'login' }}" id="login">
+            <h2 class="text-uppercase text-center"> Log in</h2>
+            <form id="login" method="POST" action="{{ url_for('B_user.signin') }}">
+              <div class="form-group">
+                <label> Your Email<span class="req">*</span> </label>
+                <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <label> Password<span class="req">*</span> </label>
+                <input type="password" class="form-control" name="password" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="mrgn-30-top">
+                <button type="submit" class="btn btn-larger btn-block">
+                Log in
+                </button>
+              </div>
+            </form>
+            <br>
+            <p>Don't have account?<a href="#signup"  role="tab" data-toggle="tab"> Register here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</body>
+<!-- partial -->
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}">
+</head>
+    <div class="container" style="margin-top:-300px;">
+      <br><br>
+      <h3>Your links</h3>
+      <hr>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        {% for post in posts[::-1] %}
+          <div class="post-preview">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+            <p class="post-meta">Posted on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
+            <div class="inner"> 
+              <form action="{{ url_for('posts_B.edit') }}" method="POST" style="display: inline-block;">
+                <input type=hidden value="{{ post.id}}"name="edit_id" id="edit_id" />
+                <button type="submit" onclick="myFunction()" id="edit" action="" class="admin-button">Edit</button>
+              </form>
+              <form action="{{ url_for('posts_B.delete') }}" method="POST" style="display: inline-block;">
+                <input type=hidden value="{{ post.id}}"name="del_id" id="del_id" />
+                <button type="submit" onclick="myFunction()" id="delete" action="" class="admin-button">Delete</button>
+              </form>
+            </div>
+            <br>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

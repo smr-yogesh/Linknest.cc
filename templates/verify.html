@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginstyle.css') }}">
+</head>
+<title>Verify Email</title>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+    <center><h1>{{ message }}</h1></center>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<section class="all" id="all">
+    <div class="max-width">
+        <div class="row">
+            <div id="userform" style="margin-top:-300px;">
+                <div class="home-content">
+                    <div class="text-1">Please verify your email!</div>
+                    <form id="signup" method="POST" action="{{ url_for('B_user.is_verified') }}">
+                        <div class="form-group">
+                        <label>Check your inbox<span class="req"></span></label>
+                        <input type="text" placeholder="Verification Code" class="form-control" name="code" id="code" required data-validation-required-message="Please enter Verification code!" autocomplete="off">
+                        <p class="help-block text-danger"></p>
+                        <small id="nameFeedback"></small>
+                        </div>        
+                        <div class="mrgn-30-top">
+                        <button type="submit" class="btn btn-larger btn-block">
+                        Verify
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
