@@ -5,8 +5,36 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}">
 </head>
-    <div class="container" style="margin-top:-300px;">
-      <br><br>
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+            <div class="message message-{{ category }}">
+                <p>{{ message }}</p>
+                <button class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+            </div>
+            <script>
+              setTimeout(function() {
+                  document.querySelector('.message-{{ category }}').style.display = 'none';
+              }, 3000);
+          </script>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="button-container">
+        <div class="left-buttons">
+            <a href="{{ url_for('posts_B.a_p') }}">
+                <button class="basic-button">Add Link</button>
+            </a>
+            <a href="{{ url_for('admin_B.settings') }}">
+                <button class="basic-button">Settings</button>
+            </a>
+        </div>
+        <div class="right-text">
+            <p>Find your links at: <a target="_blank" href="/{{ session['user'] }}">linknest.cc/{{ session['user'] }}</a> </p>
+        </div>
+      </div>
+      <br>
       <h3>Your links</h3>
       <hr>
       <div class="row">

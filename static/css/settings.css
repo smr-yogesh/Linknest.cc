@@ -81,6 +81,7 @@ input {
   
   #userform2 {
 	margin-top: 50px;
+  margin-left: -20px;
 	background-color: #f1f3fb;
 	border-radius: 10px;
 	display: flex;

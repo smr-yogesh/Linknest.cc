@@ -4,9 +4,23 @@
     <title>Add post</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
 </head>
-<div class="container" style="margin-top:-250px;">
-  <h3>Add links</h3>
-  <hr>
+<div class="container">
+    <div class="button-container">
+        <div class="left-buttons">
+            <a href="{{ url_for('posts_B.a_p') }}">
+                <button class="basic-button">Add Link</button>
+            </a>
+            <a href="{{ url_for('admin_B.settings') }}">
+                <button class="basic-button">Settings</button>
+            </a>
+        </div>
+        <div class="right-text">
+            <p>Find your links at: <a target="_blank" href="/{{ session['user'] }}">linknest.cc/{{ session['user'] }}</a> </p>
+        </div>
+      </div>
+      <br>
+      <h3>Add links</h3>
+      <hr>
 </div>
     <div class="add_container">
         <div class="blog-add">
