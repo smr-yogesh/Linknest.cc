@@ -421,6 +421,8 @@ hr{
 
 .main_content {
     flex: 1 0 auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
 
 /* footer section styling */
