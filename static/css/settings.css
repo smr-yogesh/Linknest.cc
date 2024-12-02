@@ -14,7 +14,7 @@ body {
 .sidebar {
     width: 200px;
     padding: 20px;
-    border-right: 2px solid black;
+    border-right: 2px solid var(--text-color);
     display: flex;
     flex-direction: column; /* Align items vertically */
     gap: 10px; /* Add space between items */
@@ -23,10 +23,11 @@ body {
 .sidebar button {
     width: 100%; /* Make buttons span the full width of the sidebar */
     padding: 10px;
-    background-color: white;
+    background-color: var(--bg-color);
     text-align: left; /* Align text to the left */
     cursor: pointer;
     font-size: 16px;
+    color: var(--text-color);;
 }
 
 .sidebar button:hover {
@@ -48,11 +49,12 @@ body {
 button {
     padding: 10px 20px;
     border: 1px;
-    background-color: white;
+    background-color: var(--bg-color);
+    color: var(--text-color);;
     cursor: pointer;
     width: 100px;
     height: 40px;
-    border: none;
+    border: 1px solid var(--text-color);
     font-size: 16px;
     font-weight: 500;
     border-radius: 5px;
@@ -67,7 +69,7 @@ input {
     width: 300px;
     padding: 10px;
     margin: 5px 0;
-    border: 2px solid black;
+    border: 2px solid var(--text-color);;
 }
 .error {
   border: 2px solid red;
@@ -82,7 +84,7 @@ input {
   #userform2 {
 	margin-top: 50px;
   margin-left: -20px;
-	background-color: #f1f3fb;
+	background-color: var(--bg-color);
 	border-radius: 10px;
 	display: flex;
   }
@@ -110,7 +112,7 @@ input {
 	height: 40px;
 	margin-top: 10px;
 	padding: 0 10px;
-	border: 1px solid #ccc;
+	border: 1px solid var(--text-color);
 	border-radius: 5px;
 	font-size: 16px;
   }
@@ -129,8 +131,8 @@ input {
 	width: 100%;
 	height: 40px;
 	background-color: #4CAF50;
-	border: none;
-	color: #fff;
+	color: var(--text-color);
+
 	font-size: 16px;
 	font-weight: 500;
 	border-radius: 5px;
@@ -197,6 +199,7 @@ input {
         width: 100%;
 		    margin-top: 50px;
         margin-right: auto;
+        margin-left: 9px;
         display: block;
         padding: 40px;
         border-radius: 10px;
@@ -220,6 +223,7 @@ input {
 	#userform2 .btn {
 	  height: 30px;
 	  font-size: 14px;
+    border: 2px solid var(--text-color);
 	}
   
 	#userform2 p {
@@ -229,7 +233,7 @@ input {
     .sidebar {
         width: auto;
         padding: 20px;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid var(--text-color);
         border-right: #f1f3fb;
         flex-direction: row; /* Align items vertically */
         gap: 10px; /* Add space between items */

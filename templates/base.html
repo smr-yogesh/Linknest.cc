@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/ok.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script id="animation-script" src="{{ url_for('static', filename='js/animation/dots.js') }}"></script>
@@ -25,6 +26,7 @@
             <div class="logo"><a href="/">Link<span>Nest</span></a></div>
             <div class="search-form"></div>
             <ul class="menu">
+              <li><a id="theme-toggle" class="bi bi-moon-fill"></a></li>
               <li><a href={{ url_for('B_user.contact') }} class="menu-btn">Contact</a></li>
               {%if "user" in session:%}
                 <li><a href={{ url_for('admin_B.admin') }} class="menu-btn">{{ session['user'] }}</a></li>
@@ -47,4 +49,5 @@
   </body>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="{{ url_for('static', filename='js/validation.js') }}"></script>  
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>  
 </html>
