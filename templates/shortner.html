@@ -22,43 +22,44 @@
         </div>
       </div>
       <br>
-      <h3>Add links</h3>
+      <h3>Link Shortner</h3>
       <hr>
 </div>
     <div class="add_container">
         <div class="blog-add">
             <div class="card">
             <div class="card-image"></div>
-                <form class="card-form" name="addForm" id="addForm" method="POST" action="{{ url_for('posts_B.ap') }}" >
+                <form class="card-form" name="addForm" id="addForm" method="POST" action="{{ url_for('short.st') }}" >
                     <div class="input">
                         <input type="text" class="input-field"  placeholder="Title" name="title" id="title" required>
-                    </div>
-                    <div class="input">
-                        <input type="hidden" class="input-field" placeholder="Author" value="{{ session['user'] }}" name="author" id="author" required >
-                    </div>
-                    <div class="input">
-
-                        <input class="input-field" placeholder="Choose an option:" type="text" list="options" id="media" name="media" oninput="enforceSelection()" />
-
-                        <datalist id="options">
-                            <option value="Facebook"></option>
-                            <option value="Spotify"></option>
-                            <option value="Instagram"></option>
-                            <option value="Youtube"></option>
-                            <option value="Custom"></option>
-                        </datalist>
-
                     </div>
                     <div class="input">
                         <input type="text" class="input-field"  placeholder="URL" name="url" id="url" required>
                     </div>
                     <div class="action">
-                        <button type="submit" class="action-button" id="sendMessageButton">Add</button>
+                        <button type="submit" class="action-button" id="sendMessageButton">Short It</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+<div class="container" style="margin-top:-200px;">
+    <h3>Your Shortlinks</h3>
+        <hr>
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                {% for post in shorts[::-1] %}
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        {{ post.title }}
+                    </h2>
+                    <p>linknest.cc/{{ post.short }}</p>
+                    <br>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+</div>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

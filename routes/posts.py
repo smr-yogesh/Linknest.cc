@@ -112,7 +112,6 @@ def delete():
 @posts_B.route("/<username>")
 def user_links(username):
     # Fetch links for the username
-    print("username is " + username)
     posts = links.query.filter_by(author=username).all()
 
     # If user does not exist, return 404 error

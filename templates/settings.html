@@ -25,13 +25,16 @@
       {% endwith %}
       <div class="button-container">
         <div class="left-buttons">
+            <a href="{{ url_for('short.shor_t') }}">
+              <button class="basic-button">Short it</button>
+            </a>
             <a href="{{ url_for('posts_B.a_p') }}">
                 <button class="basic-button">Add Link</button>
             </a>
             <a href="{{ url_for('admin_B.settings') }}">
                 <button class="basic-button">Settings</button>
             </a>
-        </div>
+          </div>
         <div class="right-text">
             <p>Find your links at: <a target="_blank" href="/{{ session['user'] }}">linknest.cc/{{ session['user'] }}</a> </p>
         </div>

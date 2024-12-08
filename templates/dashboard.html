@@ -23,12 +23,15 @@
       {% endwith %}
       <div class="button-container">
         <div class="left-buttons">
-            <a href="{{ url_for('posts_B.a_p') }}">
-                <button class="basic-button">Add Link</button>
-            </a>
-            <a href="{{ url_for('admin_B.settings') }}">
-                <button class="basic-button">Settings</button>
-            </a>
+          <a href="{{ url_for('short.shor_t') }}">
+            <button class="basic-button">Short it</button>
+          </a>
+          <a href="{{ url_for('posts_B.a_p') }}">
+              <button class="basic-button">Add Link</button>
+          </a>
+          <a href="{{ url_for('admin_B.settings') }}">
+              <button class="basic-button">Settings</button>
+          </a>
         </div>
         <div class="right-text">
             <p>Find your links at: <a target="_blank" href="/{{ session['user'] }}">linknest.cc/{{ session['user'] }}</a> </p>
@@ -47,11 +50,11 @@
             <p class="post-meta">Added on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
             <div class="inner"> 
               <form action="{{ url_for('posts_B.edit') }}" method="POST" style="display: inline-block;">
-                <input type=hidden value="{{ post.id}}"name="edit_id" id="edit_id" />
+                <input type=hidden value="{{post.id}}"name="edit_id" id="edit_id" />
                 <button type="submit" onclick="myFunction()" id="edit" action="" class="admin-button">Edit</button>
               </form>
               <form action="{{ url_for('posts_B.delete') }}" method="POST" style="display: inline-block;">
-                <input type=hidden value="{{ post.id}}"name="del_id" id="del_id" />
+                <input type=hidden value="{{post.id}}"name="del_id" id="del_id" />
                 <button type="submit" onclick="myFunction()" id="delete" action="" class="admin-button">Delete</button>
               </form>
             </div>
