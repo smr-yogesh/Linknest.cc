@@ -20,7 +20,6 @@ def getid():
 
 @admin_B.route("/dashboard")  # Admin URL rename to dashboard
 def admin():
-    print(os.getenv("SQLALCHEMY_DATABASE_URI"))
     # Checks if a user is logged in
     if "user" in session:
         # Retrieves all blog posts for the logged-in user

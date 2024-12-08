@@ -3,6 +3,7 @@ from routes.admin import admin_B
 from routes.user import B_user
 from routes.posts import posts_B
 from routes.validator import validator
+from routes.short import short
 from routes import app
 from datetime import datetime
 
@@ -10,6 +11,7 @@ app.register_blueprint(admin_B)
 app.register_blueprint(B_user)
 app.register_blueprint(posts_B)
 app.register_blueprint(validator)
+app.register_blueprint(short)
 
 
 @app.errorhandler(404)
