@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <head>
-    <title>Add post</title>
+    <title>URL Shortner</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/poststyle.css') }}">
 </head>
 <div class="container">
@@ -53,7 +53,7 @@
                     <h2 class="post-title">
                         {{ post.title }}
                     </h2>
-                    <p>linknest.cc/{{ post.short }}</p>
+                    <a style="color: inherit;" target="_blank" href="/s/{{ post.short }}">linknest.cc/s/{{ post.short }}</a>
                     <br>
                 </div>
                 {% endfor %}
